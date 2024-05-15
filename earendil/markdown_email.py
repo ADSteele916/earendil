@@ -29,13 +29,29 @@ class MarkdownEmail(BaseEmail):
         self.html_text = render_html(body)
         self.html_mime = MIMEText(self.html_text, "html")
 
-    def get_message(self, recipient: str) -> MIMEMultipart:
+    def get_message(
+        self,
+        to: str | list[str],
+        cc: str | list[str] | None = None,
+        bcc: str | list[str] | None = None,
+    ) -> MIMEMultipart:
+        cc = [] if cc is None else cc
+        bcc = [] if bcc is None else bcc
+
         mime = MIMEMultipart("alternative")
         mime["From"] = self.sender
-        mime["To"] = recipient
+        mime["To"] = self.normalize_recipients(to)
+        mime["Cc"] = self.normalize_recipients(cc)
+        mime["Bcc"] = self.normalize_recipients(bcc)
         mime["Subject"] = self.subject
 
         mime.attach(self.plain_mime)
         mime.attach(self.html_mime)
 
         return mime
+
+    @staticmethod
+    def normalize_recipients(recipients: str | list[str]) -> str:
+        if isinstance(recipients, str):
+            return recipients
+        return ", ".join(recipients)

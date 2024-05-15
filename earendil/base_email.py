@@ -12,10 +12,17 @@ class BaseEmail(metaclass=ABCMeta):
         self.subject = subject
 
     @abstractmethod
-    def get_message(self, recipient: str) -> EmailMessage:
+    def get_message(
+        self,
+        to: str | list[str],
+        cc: str | list[str] | None = None,
+        bcc: str | list[str] | None = None,
+    ) -> EmailMessage:
         """Generate a message that can be sent using the SMTP.send_message method.
 
         Args:
-            recipient: Address of the email's intended recipient.
+            to: Address(es) of the email's intended recipient(s).
+            cc: Address(es) to CC on the email.
+            bcc: Address(es) to BCC on the email.
         """
         pass

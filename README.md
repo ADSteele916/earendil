@@ -1,5 +1,10 @@
 # Eärendil
 
+> Eärendil was a mariner\
+> that tarried in Arvernien;\
+> he built a boat of timber felled\
+> in Nimbrethil to journey in;
+
 Eärendil is a Markdown-based HTML email API written in Python. It allows users to draft an email message in Markdown 
 and send it as a rich email viewable as both HTML and plaintext.
 
@@ -18,7 +23,6 @@ should be removed, as should heading and emphasis symbols.
 
 ### Planned Features
 
-* Bulk mailing functionality.
 * Support for rendering a greater subset of Markdown as plaintext.
 * Support for attachments.
 

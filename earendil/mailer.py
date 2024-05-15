@@ -6,7 +6,9 @@ from smtplib import SMTP
 from earendil.markdown_email import MarkdownEmail
 
 
-def send_markdown_email(server: SMTP, sender: str, recipient: str, subject: str, body: str):
+def send_markdown_email(
+    server: SMTP, sender: str, recipient: str, subject: str, body: str
+):
     """Sends a Markdown-formatted email message with the given parameters.
 
     Before calling, server must be ready for a send_message method invocation.
@@ -24,7 +26,9 @@ def send_markdown_email(server: SMTP, sender: str, recipient: str, subject: str,
     server.send_message(message)
 
 
-def send_markdown_email_from_file(server: SMTP, sender: str, recipient: str, subject: str, file_name: Path):
+def send_markdown_email_from_file(
+    server: SMTP, sender: str, recipient: str, subject: str, file_name: Path
+):
     """Sends a Markdown-formatted email message loaded from a file with the given parameters.
 
     Before calling, server must be ready for a send_message method invocation.

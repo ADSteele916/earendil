@@ -25,7 +25,9 @@ def __convert_markdown_line(line: str) -> str:
     line = re.sub(__unescaped_emphasis, lambda match: match.group(0)[:-1], line)
 
     # Convert hyperlinks into URLs in parentheses.
-    line = re.sub(__hyperlink, lambda match: f"{match.group(1)} ({match.group(2)})", line)
+    line = re.sub(
+        __hyperlink, lambda match: f"{match.group(1)} ({match.group(2)})", line
+    )
 
     return line
 
@@ -42,7 +44,11 @@ def markdown_to_plaintext(text: str) -> str:
     lines = text.split("\n")
 
     # Remove consecutive lines of whitespace.
-    trimmed_lines = [line for i, line in enumerate(lines) if i == 0 or line != lines[i - 1] or line != ""]
+    trimmed_lines = [
+        line
+        for i, line in enumerate(lines)
+        if i == 0 or line != lines[i - 1] or line != ""
+    ]
 
     new_lines = []
     for line in trimmed_lines:

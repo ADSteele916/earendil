@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "earendil_mail"
-version = "0.1.0"
+version = "0.2.0"
 description = "A Markdown-based HTML email API."
 authors = ["Alex Steele <45648397+ADSteele916@users.noreply.github.com>"]
 readme = "README.md"
